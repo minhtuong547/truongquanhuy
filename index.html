@@ -3,19 +3,104 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="5;url=https://new-website.com"> <!-- Redirect to new website after 5 seconds -->
   <title>Thông Báo Chuyển Website</title>
-  <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  
+  <!-- Link to Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      background-color: #ffffff;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .message-box h1 {
+      color: #28a745;
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .message-box p {
+      font-size: 16px;
+      color: #555;
+    }
+
+    .countdown {
+      margin-top: 20px;
+    }
+
+    #redirectButton {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+    }
+
+    #redirectButton:hover {
+      background-color: #218838;
+    }
+
+    #redirectButton i {
+      margin-right: 10px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: 80%;
+      }
+
+      .message-box h1 {
+        font-size: 20px;
+      }
+
+      .message-box p {
+        font-size: 14px;
+      }
+    }
+  </style>
+
+  <script>
+    // Định nghĩa URL chuyển hướng khi người dùng bấm nút
+    const newUrl = "https://new-website.com"; // Thay đổi thành website bạn muốn chuyển hướng tới
+
+    // Lắng nghe sự kiện bấm nút
+    document.getElementById('redirectButton').addEventListener('click', function() {
+      window.location.href = newUrl; // Chuyển hướng người dùng khi nút bấm
+    });
+  </script>
 </head>
 <body>
   <div class="container">
     <div class="message-box">
-      <h1>Chúng tôi đã chuyển website!</h1>
-      <p>Website của chúng tôi đã được nâng cấp và chuyển sang địa chỉ mới. Bạn sẽ được chuyển hướng trong vài giây.</p>
-      <div class="countdown">
-        <p><span id="countdown-timer">5</span> giây nữa bạn sẽ được chuyển hướng tự động.</p>
-      </div>
+      <h1><i class="fas fa-exclamation-circle"></i> Chúng tôi đã chuyển website!</h1>
+      <p><i class="fas fa-arrow-right"></i> Website của chúng tôi đã được nâng cấp và chuyển sang địa chỉ mới. Bạn có thể bấm vào nút dưới đây để chuyển hướng ngay lập tức.</p>
+      <button id="redirectButton" class="redirect-btn"><i class="fas fa-arrow-right"></i> Chuyển Hướng Ngay</button>
     </div>
   </div>
 </body>
