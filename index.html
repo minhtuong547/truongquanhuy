@@ -22,19 +22,21 @@
 
     body {
       font-family: 'Roboto', sans-serif;
-      background-color: #f4f4f9;
+      background: linear-gradient(45deg, #6a11cb, #2575fc);
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       margin: 0;
-      transition: all 0.3s ease-in-out;
+      transition: background-color 0.5s ease-in-out;
     }
 
     .container {
       text-align: center;
       padding: 40px;
-      background-color: #ffffff;
+      background-color: rgba(255, 255, 255, 0.8);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
       max-width: 500px;
@@ -134,6 +136,18 @@
         opacity: 1;
       }
     }
+
+    @keyframes gradientAnimation {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
   </style>
 
   <script>
@@ -143,6 +157,17 @@
     // Lắng nghe sự kiện bấm nút
     document.getElementById('redirectButton').addEventListener('click', function() {
       window.location.href = newUrl; // Chuyển hướng người dùng khi nút bấm
+    });
+
+    // Thêm sự kiện di chuột vào phần background để thay đổi màu nền
+    document.body.addEventListener('mouseover', function() {
+      document.body.style.background = 'linear-gradient(45deg, #ff6a00, #ffb800)';
+      document.body.style.transition = 'background 0.5s ease-in-out';
+    });
+
+    document.body.addEventListener('mouseout', function() {
+      document.body.style.background = 'linear-gradient(45deg, #6a11cb, #2575fc)';
+      document.body.style.transition = 'background 0.5s ease-in-out';
     });
   </script>
 </head>
