@@ -30,6 +30,7 @@
       align-items: center;
       height: 100vh;
       margin: 0;
+      overflow: hidden;
       transition: background-color 0.5s ease-in-out;
     }
 
@@ -42,18 +43,19 @@
       max-width: 500px;
       width: 100%;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      animation: bounceIn 2s ease-in-out;
     }
 
     .container:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+      transform: translateY(-15px) rotate(5deg);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
     }
 
     .message-box h1 {
       color: #28a745;
       font-size: 26px;
       margin-bottom: 20px;
-      animation: bounceInDown 1s;
+      animation: fadeInUp 1.5s ease-out;
     }
 
     .message-box p {
@@ -86,11 +88,13 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       display: inline-flex;
       align-items: center;
+      position: relative;
+      animation: slideIn 1s ease-out;
     }
 
     #redirectButton:hover {
       background-color: #218838;
-      transform: scale(1.1);
+      transform: scale(1.1) rotate(5deg);
       box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
     }
 
@@ -113,21 +117,32 @@
       }
     }
 
-    /* Animation for buttons and text */
-    @keyframes bounceInDown {
+    /* Animation for bouncing container */
+    @keyframes bounceIn {
       0% {
+        transform: translateY(-1000px);
         opacity: 0;
-        transform: translateY(-300px);
       }
       60% {
+        transform: translateY(30px);
         opacity: 1;
-        transform: translateY(25px);
       }
       100% {
         transform: translateY(0);
       }
     }
 
+    /* Animation for button slide-in */
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    /* Animation for text fade-in */
     @keyframes fadeIn {
       0% {
         opacity: 0;
@@ -137,6 +152,19 @@
       }
     }
 
+    /* Animation for text fade-in-up */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Gradient animation to move background color */
     @keyframes gradientAnimation {
       0% {
         background-position: 0% 50%;
@@ -148,6 +176,20 @@
         background-position: 0% 50%;
       }
     }
+
+    /* New Effect for Color Change */
+    @keyframes colorShift {
+      0% {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+      }
+      50% {
+        background: linear-gradient(45deg, #ff6a00, #ffb800);
+      }
+      100% {
+        background: linear-gradient(45deg, #6a11cb, #2575fc);
+      }
+    }
+
   </style>
 
   <script>
@@ -159,14 +201,14 @@
       window.location.href = newUrl; // Chuyển hướng người dùng khi nút bấm
     });
 
-    // Thêm sự kiện di chuột vào phần background để thay đổi màu nền
+    // Thêm sự kiện di chuột vào phần background để thay đổi màu nền và di chuyển
     document.body.addEventListener('mouseover', function() {
-      document.body.style.background = 'linear-gradient(45deg, #ff6a00, #ffb800)';
+      document.body.style.animation = 'colorShift 4s ease infinite'; // Hiệu ứng đổi màu nền
       document.body.style.transition = 'background 0.5s ease-in-out';
     });
 
     document.body.addEventListener('mouseout', function() {
-      document.body.style.background = 'linear-gradient(45deg, #6a11cb, #2575fc)';
+      document.body.style.animation = 'gradientAnimation 10s ease infinite'; // Trở về gradient ban đầu
       document.body.style.transition = 'background 0.5s ease-in-out';
     });
   </script>
